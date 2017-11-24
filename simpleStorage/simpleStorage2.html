@@ -64,7 +64,8 @@
         startApp();
       }
       else {
-          alert("your ContractAddress Infomation is missing. Please Typed It");
+          alert("Your ContractAddress Infomation is missing. Please Typed It");
+          return;
       }
 
     });
@@ -102,7 +103,15 @@
       simpleStorage = simpleStorageContract.at(contractAddress);
       document.getElementById('contractAddr').innerHTML = getLink(contractAddress);
       web3.eth.getAccounts(function(e,r){
-        document.getElementById('accountAddr').innerHTML = getLink(r[0]);
+
+      if (e != null) {
+          console.log(r);
+
+          return;
+      }
+
+      document.getElementById('accountAddr').innerHTML = getLink(r[0]);
+
       });
 
       getValue();
